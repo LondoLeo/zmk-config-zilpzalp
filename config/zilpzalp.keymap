@@ -29,8 +29,7 @@
 
 #define NUM(KC, NUMBER) shift_morph_##KC_##NUMBER: SHIFT_OVERRIDE(KC, NUMBER)
     
-#define COMBO(KEY, POS) \
-        { key-positions = <POS>; bindings = <KEY>; require-prior-idle-ms = <COMBO_IDLE>; timeout-ms = <COMBO_TERM>; layers = <BASE SYM>;}
+#define COMBO(KEY, POS) { key-positions = <POS>; bindings = <&##KEY>; require-prior-idle-ms = <COMBO_IDLE>; timeout-ms = <COMBO_TERM>; layers = <BASE SYM>;}
 
 #define LEFT_AND_THUMBS 0 1 2 3 8 9 10 11 12 18 19 20 24 25 26 27
 #define RIGHT_AND_THUMBS 4 5 6 7 13 14 15 16 17 21 22 23 24 25 26 27
@@ -101,13 +100,13 @@
 
     combos {
         compatible = "zmk,combos";
-        combo_ralt1: COMBO(&qsk RALT, 18 19);
-        combo_ralt2: COMBO(&qsk RALT, 22 23);
-        combo_q: COMBO(&kp Q, 0 1);
-        combo_z: COMBO(&kp Z, 4 5);
-        combo_v: COMBO(&kp V, 19 20);
-        combo_x: COMBO(&kp X, 21 22);
-        combo_ret: COMBO(&kp RET, 16 17);
+        combo_ralt1: COMBO(qsk RALT, 18 19);
+        combo_ralt2: COMBO(qsk RALT, 22 23);
+        combo_q: COMBO(kp Q, 0 1);
+        combo_z: COMBO(kp Z, 4 5);
+        combo_v: COMBO(kp V, 19 20);
+        combo_x: COMBO(kp X, 21 22);
+        combo_ret: COMBO(kp RET, 16 17);
     };
 
     conditional_layers {
