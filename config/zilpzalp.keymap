@@ -154,7 +154,7 @@
                                &kp W          &kp F          &kp P          &kp B          &kp M          &kp L          &kp U          &kp Y
                 &kp A          &hl LALT S     &hl LGUI T     &hl LCTRL H    &kp G          &kp K          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
                                &kp J          &kp C          &kp D                                        &kp H          &comm          &dot   
-                                                             &qmt LSHFT ESC &my_lt FUN SPACE &qlt NAV BSPC&qlt SYM TAB  
+                                                             &qmt LSHFT ESC &blt FUN SPACE &qlt NAV BSPC&qlt SYM TAB  
             >;
         };
         symbols {
