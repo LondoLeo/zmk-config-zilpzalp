@@ -29,8 +29,8 @@
 
 #define NUM(KC, NUMBER) shift_morph_##KC_##NUMBER: SHIFT_OVERRIDE(KC, NUMBER)
     
-#define COMBO_KP(KEY, POS) { key-positions = <POS>; bindings = <&kp KEY>; require-prior-idle-ms = <COMBO_IDLE>; timeout-ms = <COMBO_TERM>; layers = <BASE SYM>;}
-#define COMBO_SK(KEY, POS) { key-positions = <POS>; bindings = <&qsk KEY>; require-prior-idle-ms = <COMBO_IDLE>; timeout-ms = <COMBO_TERM>; layers = <BASE SYM>;}
+#define COMBO_KP(KEY, POS) { key-positions = < POS >; bindings = <&kp KEY>; require-prior-idle-ms = <COMBO_IDLE>; timeout-ms = <COMBO_TERM>; layers = <BASE SYM>;}
+#define COMBO_SK(KEY, POS) { key-positions = < POS >; bindings = <&qsk KEY>; require-prior-idle-ms = <COMBO_IDLE>; timeout-ms = <COMBO_TERM>; layers = <BASE SYM>;}
 
 #define LEFT_AND_THUMBS 0 1 2 3 8 9 10 11 12 18 19 20 24 25 26 27
 #define RIGHT_AND_THUMBS 4 5 6 7 13 14 15 16 17 21 22 23 24 25 26 27
@@ -167,7 +167,7 @@
             bindings = <
                                &kp EXCL       &equal         &minus           &kp GRAVE      &kp BSLSH      &kp LT         &kp GT         &kp UNDER
                 &num1          &num2          &num3          &num4            &num5          &num6          &num7          &num8          &num9          &num0     
-                               &kp DOLLAR     &kp CARET      &kp AMPR                                       &kp STAR       &kp HASH       &kp RA(N5)   
+                               &kp DOLLAR     &kp CARET      &kp AMPR                                       &kp STAR       &kp HASH       &kp SLSH     
                                                              &kp TILDE        &trans         &trans         &trans
             >;
         };
