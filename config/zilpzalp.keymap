@@ -37,7 +37,7 @@
 
 / {
     behaviors {
-        hml: homerow_mods_left {
+        hl: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
@@ -48,7 +48,7 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <RIGHT_AND_THUMBS>;
         };
-        hmr: homerow_mods_right {
+        hr: homerow_mods_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
