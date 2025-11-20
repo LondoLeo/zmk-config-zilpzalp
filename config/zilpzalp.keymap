@@ -1,9 +1,141 @@
-#ifdef ZILPZALP_BLE_FLAG
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#endif
 
-#include "base_zilpzalp.h"
+#define TAPPING_TERM 200
+#define TAPPING_IDLE 140
+#define QUICK_TAP 100
+
+#define COMBO_IDLE 50
+#define COMBO_TERM 25
+
+#define BASE 0
+#define SYM 1
+#define NAV 2
+#define FUN 3
+#define SYS 4
+
+#define CG(x) LG(LC(x))
+
+#define SHIFT_OVERRIDE(KEY1, KEY2) \
+    override_##KEY1_##KEY2 { \
+        compatible = "zmk,behavior-mod-morph";\
+        #binding-cells = <0>;\
+        bindings = <&kp KEY1>, <&kp KEY2>;\
+        mods = <(MOD_LSFT)>;\
+    }
+
+#define NUM(KC, NUMBER) shift_morph_##KC_##NUMBER: SHIFT_OVERRIDE(KC, NUMBER)
+    
+#define COMBO(KEY, POS) \
+        { key-positions = <POS>; bindings = <KEY>; require-prior-idle-ms = <COMBO_IDLE>; timeout-ms = <COMBO_TERM>; layers = <BASE SYM>;}
+
+#define LEFT_AND_THUMBS 0 1 2 3 8 9 10 11 12 18 19 20 24 25 26 27
+#define RIGHT_AND_THUMBS 4 5 6 7 13 14 15 16 17 21 22 23 24 25 26 27
+
+
+/ {
+    behaviors {
+        hml: homerow_mods_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <TAPPING_TERM>;
+            require-prior-idle-ms = <TAPPING_IDLE>;
+            quick-tap-ms = <QUICK_TAP>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <RIGHT_AND_THUMBS>;
+        };
+        hmr: homerow_mods_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <TAPPING_TERM>;
+            require-prior-idle-ms = <TAPPING_IDLE>;
+            quick-tap-ms = <QUICK_TAP>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <LEFT_AND_THUMBS>;
+        };
+        qmt: quick_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+            tapping-term-ms = <TAPPING_TERM>;
+            quick-tap-ms = <QUICK_TAP>;
+            hold-trigger-on-release;
+        };
+        blt: balanced_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "balanced";
+            tapping-term-ms = <TAPPING_TERM>;
+            require-prior-idle-ms = <TAPPING_IDLE>;
+            quick-tap-ms = <QUICK_TAP>;
+            hold-trigger-on-release;
+        };
+        qlt: quick_layer_tab {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&kp>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <TAPPING_TERM>;
+            quick-tap-ms = <QUICK_TAP>;
+            hold-trigger-on-release;
+        };
+        qsk: quick_sticky_key {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
+            lazy;
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+        combo_ralt1: COMBO(&qsk RALT, 18 19);
+        combo_ralt2: COMBO(&qsk RALT, 22 23);
+        combo_q: COMBO(&kp Q, 0 1);
+        combo_z: COMBO(&kp Z, 4 5);
+        combo_v: COMBO(&kp V, 19 20);
+        combo_x: COMBO(&kp X, 21 22);
+        combo_ret: COMBO(&kp RET, 16 17);
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        sys_layer {
+            if-layers = <NAV FUN>;
+            then-layer = <SYS>;
+        };
+    };
+
+    // Numbers 
+    num1: SHIFT_OVERRIDE(SQT , N1);
+    num2: SHIFT_OVERRIDE(LBKT, N2);
+    num3: SHIFT_OVERRIDE(LBRC, N3);
+    num4: SHIFT_OVERRIDE(LPAR, N4);
+    num5: SHIFT_OVERRIDE(PRCNT,N5);
+    num6: SHIFT_OVERRIDE(AT   ,N6);
+    num7: SHIFT_OVERRIDE(RPAR, N7);
+    num8: SHIFT_OVERRIDE(RBRC, N8);
+    num9: SHIFT_OVERRIDE(RBKT, N9);
+    num0: SHIFT_OVERRIDE(DQT , N0);
+
+    comm: SHIFT_OVERRIDE(COMMA, SEMI);
+    dot: SHIFT_OVERRIDE(DOT, COLON);
+
+    minus: SHIFT_OVERRIDE(MINUS, MINUS);
+    equal: SHIFT_OVERRIDE(EQUAL, EQUAL);
+
 
 
 // zilpzalp key numbers
@@ -23,20 +155,20 @@
             label = "APT";
 
             bindings = <
-                               &kp W          &kp F          &kp P          &kp B          &kp J          &kp L          &kp U          &kp Y
-                &hl LCTRL R    &hl LALT S     &hl LGUI T     &hl LSHFT H    &hl RALT K     &hr RALT X     &hr RSHFT N    &hr RGUI A     &hr LALT I     &hr RCTRL O
-                               &kp C          &kp G          &kp D                                        &kp M          &comsem        &dotcol
-                                                             &my_lt NUM SQT &my_lt NAV SPACE &my_lt SYM E &my_lt FUN TAB
+                               &kp W          &kp F          &kp P          &kp B          &kp M          &kp L          &kp U          &kp Y
+                &kp A          &hl LALT S     &hl LGUI T     &hl LCTRL H    &kp G          &kp K          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
+                               &kp J          &kp C          &kp D                                        &kp H          &comsem        &dotcol
+                                                             &qmt LSHFT ESC &my_lt FUN SPACE &qlt NAV BSPC&qlt SYM TAB  
             >;
         };
-        numbers {
-            label = "NUM";
+        symbols {
+            label = "SYM";
 
             bindings = <
-                                  &none             &none                &none              &none          &none          &kp N7         &kp N8         &kp N9
-                &hl LCTRL KP_PLUS &hl LALT KP_MINUS &hl LGUI KP_ASTERISK &hl LSHFT KP_SLASH &kp RALT       &none          &kp N4         &kp N5         &kp N6         &kp DOT
-                                  &kp N9            &kp N8               &kp N7                                           &kp N1         &kp N2         &kp N3
-                                                             &trans         &trans         &kp E          &kp N0
+                               &kp EXCL       &equal         &minus           &kp GRAVE      &kp BSLSH      &kp LT         &kp GT         &kp UNDER
+                &num1          &num2          &num3          &num4            &num5          &num6          &num7          &num8          &num9          &num0     
+                               &kp DOLLAR     &kp CARET      &kp AMPR                                       &kp STAR       &kp HASH       &kp RA(N5)   
+                                                             &kp TILDE        &trans         &trans         &trans
             >;
         };
         navigation {
@@ -44,43 +176,30 @@
 
             bindings = <
                                &none          &none          &none           &kp C_VOL_UP   &kp LC(X)      &kp LC(INSERT) &kp LS(INSERT) &kp INSERT
-                &sk LCTRL      &sk LALT       &sk LGUI       &sk LSHFT       &kp C_VOL_DN   &kp C_MUTE     &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT
+                &none          &sk LALT       &sk LGUI       &sk LCTRL       &kp C_VOL_DN   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp CG(S)
                                &kp HOME       &kp PG_DN      &kp END                                       &kp HOME       &kp PG_UP      &kp END
                                                              &trans          &trans         &trans         &trans
             >;
         };
-        symbols {
-            label = "SYM";
-
-            bindings = <
-                               &none          &none          &none            &none          &none          &none          &none          &none
-                &kp EXCL       &kp AT         &kp HASH       &kp DOLLAR       &none          &none          &kp AMPERSAND  &kp ASTERISK   &kp PERCENT    &kp CARET
-                               &kp GRAVE      &kp DQT        &kp UNDERSCORE                                 &kp BACKSLASH  &kp PIPE       &kp EQUAL
-                                                             &kp TILDE        &trans         &trans         &trans
-            >;
-        };
-#ifdef ZILPZALP_BLE_FLAG
         function {
             label = "FUN";
 
             bindings = <
-                               &bootloader    &trans         &bt BT_CLR_ALL &bt BT_PRV     &kp F12        &kp F7         &kp F8         &kp F9
-                &bootloader    &kp F12        &kp F11        &kp F10        &bt BT_NXT     &kp F11        &kp F4         &kp F5         &kp F6         &kp F10
-                               &kp F9         &kp F8         &kp F7                                       &kp F1         &kp F2         &kp F3
-                                                             &out OUT_TOG   &trans         &trans         &trans
-            >;
-#endif
-#ifndef ZILPZALP_BLE_FLAG
-        function {
-            label = "FUN";
-
-            bindings = <
-                               &bootloader    &trans         &trans         &trans         &kp F12        &kp F7         &kp F8         &kp F9
-                &bootloader    &kp F12        &kp F11        &kp F10        &trans         &kp F11        &kp F4         &kp F5         &kp F6         &kp F10
-                               &kp F9         &kp F8         &kp F7                                       &kp F1         &kp F2         &kp F3
+                               &kp CG(N6)     &kp CG(N7)     &kp CG(N8)     &kp CG(N9)     &kp F1         &kp F2         &kp F3         &kp F4
+                &kp CG(N1)     &kp CG(N2)     &kp CG(N3)     &kp CG(N4)     &kp CG(N5)                    &kp F5         &kp F6         &kp F7         &kp F8         &kp F9
+                               &none          &kp LC(PG_UP)  &kp LC(PG_DN)                                &kp F10        &kp F11        &kp F12
                                                              &trans         &trans         &trans         &trans
             >;
-#endif
+        };
+        function {
+            label = "SYS";
+
+            bindings = <
+                               &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &none          &none          &none          &none   
+                &bootloader    &none          &kp C_PREV     &kp C_NEXT     &kp C_PP       &kp C_MUTE     &kp C_VOL_DN   &kp C_VOL_UP   &none          &bootloader
+                               &none          &none          &none                                        &none          &none          &none   
+                                                             &out OUT_TOG   &trans         &trans         &trans
+            >;
         };
 
     };
