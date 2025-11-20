@@ -163,7 +163,7 @@
             bindings = <
                                &kp EXCL       &equal         &minus           &kp GRAVE      &kp BSLH       &kp LT         &kp GT         &kp UNDER
                 &num1          &num2          &num3          &num4            &num5          &num6          &num7          &num8          &num9          &num0     
-                               &kp DOLLAR     &kp CARET      &kp AMPR                                       &kp STAR       &kp HASH       &kp FSLH     
+                               &kp DOLLAR     &kp CARET      &kp AMPS                                       &kp STAR       &kp HASH       &kp FSLH     
                                                              &kp TILDE        &trans         &trans         &trans
             >;
         };
