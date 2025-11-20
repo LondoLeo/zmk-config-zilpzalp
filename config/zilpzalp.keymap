@@ -101,13 +101,13 @@
 
     combos {
         compatible = "zmk,combos";
-        combo_ralt1: COMBO_SK(RALT, 18 19);
-        combo_ralt2: COMBO_SK(RALT, 22 23);
-        combo_q: COMBO_KP(Q, 0 1);
-        combo_z: COMBO_KP(Z, 4 5);
-        combo_v: COMBO_KP(V, 19 20);
-        combo_x: COMBO_KP(X, 21 22);
-        combo_ret: COMBO_KP(RET, 16 17);
+        combo_ralt1 COMBO_SK(RALT, 18 19);
+        combo_ralt2 COMBO_SK(RALT, 22 23);
+        combo_q COMBO_KP(Q, 0 1);
+        combo_z COMBO_KP(Z, 4 5);
+        combo_v COMBO_KP(V, 19 20);
+        combo_x COMBO_KP(X, 21 22);
+        combo_ret COMBO_KP(RET, 16 17);
     };
 
     conditional_layers {
