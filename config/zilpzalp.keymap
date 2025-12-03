@@ -107,6 +107,7 @@
         COMBO(v,&kp V, 19 20);
         COMBO(x,&kp X, 21 22);
         COMBO(tmux ,&kp LC(S), 5 6 );
+        COMBO(tmux ,&kp LC(S), 1 2 );
     };
 
     conditional_layers {
