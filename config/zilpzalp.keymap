@@ -103,10 +103,10 @@
         COMBO(ralt1,&qsk RALT, 18 19);
         COMBO(ralt2,&qsk RALT, 22 23);
         COMBO(q,&kp Q, 0 1);
-        COMBO(z,&kp Z, 4 5);
+        COMBO(z,&kp Z, 6 7);
         COMBO(v,&kp V, 19 20);
         COMBO(x,&kp X, 21 22);
-        COMBO(ret,&kp RET, 16 17);
+        COMBO(bspc,&kp BSPC, 16 15);
     };
 
     conditional_layers {
@@ -154,7 +154,7 @@
                                &kp W          &kp F          &kp P          &kp B          &kp M          &kp L          &kp U          &kp Y
                 &kp A          &hl LALT R     &hl LGUI S     &hl LCTRL T    &kp G          &kp K          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
                                &kp J          &kp C          &kp D                                        &kp H          &comm          &dot   
-                                                             &qmt LSHFT ESC &blt FUN SPACE &qlt NAV BSPC&qlt SYM TAB  
+                                                             &qmt LSHFT ESC &blt FUN SPACE &qlt NAV RET &qlt SYM TAB  
             >;
         };
         symbols {
@@ -164,7 +164,7 @@
                                &kp EXCL       &equal         &minus           &kp GRAVE      &kp BSLH       &kp LT         &kp GT         &kp UNDER
                 &num1          &num2          &num3          &num4            &num5          &num6          &num7          &num8          &num9          &num0     
                                &kp DOLLAR     &kp CARET      &kp AMPS                                       &kp STAR       &kp HASH       &kp FSLH     
-                                                             &kp TILDE        &trans         &trans         &trans
+                                                             &trans           &trans         &trans         &trans
             >;
         };
         navigation {
