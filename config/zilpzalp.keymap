@@ -6,7 +6,7 @@
 
 #define TAPPING_TERM 200
 #define TAPPING_IDLE 140
-#define QUICK_TAP 150
+#define QUICK_TAP 100
 
 #define COMBO_IDLE 50
 #define COMBO_TERM 25
@@ -83,7 +83,7 @@
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
             flavor = "hold-preferred";
-            tapping-term-ms = <TAPPING_TERM>;
+            tapping-term-ms = <TAPPING_TERM >;
             quick-tap-ms = <QUICK_TAP>;
             hold-trigger-on-release;
         };
@@ -135,6 +135,7 @@
 
     minus: SHIFT_OVERRIDE(MINUS, MINUS);
     equal: SHIFT_OVERRIDE(EQUAL, EQUAL);
+    excl: SHIFT_OVERRIDE(EXCL, PLUS);
 
 
 
@@ -162,7 +163,7 @@
             label = "SYM";
 
             bindings = <
-                               &kp EXCL       &equal         &minus           &kp GRAVE      &kp BSLH       &kp LT         &kp GT         &kp UNDER
+                               &excl          &equal         &minus           &kp GRAVE      &kp BSLH       &kp LT         &kp GT         &kp UNDER
                 &num1          &num2          &num3          &num4            &num5          &num6          &num7          &num8          &num9          &num0     
                                &kp DOLLAR     &kp CARET      &kp AMPS                                       &kp STAR       &kp HASH       &kp FSLH     
                                                              &trans           &trans         &trans         &trans
