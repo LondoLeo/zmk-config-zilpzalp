@@ -20,7 +20,7 @@
 #define CG(x) LG(LC(x))
 
 #define SHIFT_OVERRIDE(KEY1, KEY2) \
-    override_##KEY1_##KEY2 { \
+    override_##KEY1 { \
         compatible = "zmk,behavior-mod-morph";\
         #binding-cells = <0>;\
         bindings = <&kp KEY1>, <&kp KEY2>;\
@@ -152,7 +152,7 @@
 
             bindings = <
                                &kp W          &kp F          &kp P          &kp B          &kp M          &kp L          &kp U          &kp Y
-                &kp A          &hl LALT S     &hl LGUI T     &hl LCTRL H    &kp G          &kp K          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
+                &kp A          &hl LALT R     &hl LGUI S     &hl LCTRL T    &kp G          &kp K          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
                                &kp J          &kp C          &kp D                                        &kp H          &comm          &dot   
                                                              &qmt LSHFT ESC &blt FUN SPACE &qlt NAV BSPC&qlt SYM TAB  
             >;
