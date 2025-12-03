@@ -7,7 +7,7 @@
 #define TAPPING_TERM 200
 #define TAPPING_IDLE 140
 #define QUICK_TAP 100
-#define OTHER_QUICK_TAP QUICK_TAP + 50
+#define OTHER_QUICK_TAP 150
 
 #define COMBO_IDLE 50
 #define COMBO_TERM 25
@@ -66,7 +66,7 @@
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
             tapping-term-ms = <TAPPING_TERM>;
-            quick-tap-ms = <OTHER_QUICK_TAP>;
+            quick-tap-ms = <150>;
             hold-trigger-on-release;
         };
         blt: balanced_layer_tap {
@@ -85,7 +85,7 @@
             bindings = <&mo>, <&kp>;
             flavor = "hold-preferred";
             tapping-term-ms = <TAPPING_TERM >;
-            quick-tap-ms = <OTHER_QUICK_TAP>;
+            quick-tap-ms = <150>;
             hold-trigger-on-release;
         };
         qsk: quick_sticky_key {
@@ -157,7 +157,7 @@
                                &kp W          &kp F          &kp P          &kp B          &kp K          &kp L          &kp U          &kp Y
                 &kp A          &hl LALT R     &hl LGUI S     &hl LCTRL T    &kp G          &kp M          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
                                &kp J          &kp C          &kp D                                        &kp H          &comm          &dot   
-                                                             &qmt LSHFT ESC &blt FUN SPACE &qlt NAV BSPC&qlt SYM TAB  
+                                                             &qmt LSHFT ESC &blt FUN SPACE &qlt NAV RET &qlt SYM BSPC 
             >;
         };
         symbols {
@@ -175,7 +175,7 @@
 
             bindings = <
                                &none          &none          &none           &kp C_VOL_UP   &kp LC(X)      &kp LC(INSERT) &kp LS(INSERT) &kp INSERT
-                &none          &sk LALT       &sk LGUI       &sk LCTRL       &kp C_VOL_DN   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp RET 
+                &none          &sk LALT       &sk LGUI       &sk LCTRL       &kp C_VOL_DN   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp TAB 
                                &kp HOME       &kp PG_DN      &kp END                                       &kp HOME       &kp PG_UP      &kp END
                                                              &trans          &trans         &trans         &trans
             >;
