@@ -7,6 +7,7 @@
 #define TAPPING_TERM 200
 #define TAPPING_IDLE 140
 #define QUICK_TAP 100
+#define OTHER_QUICK_TAP QUICK_TAP + 50
 
 #define COMBO_IDLE 50
 #define COMBO_TERM 25
@@ -65,7 +66,7 @@
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
             tapping-term-ms = <TAPPING_TERM>;
-            quick-tap-ms = <QUICK_TAP>;
+            quick-tap-ms = <OTHER_QUICK_TAP>;
             hold-trigger-on-release;
         };
         blt: balanced_layer_tap {
@@ -83,8 +84,8 @@
             #binding-cells = <2>;
             bindings = <&mo>, <&kp>;
             flavor = "hold-preferred";
-            tapping-term-ms = <TAPPING_TERM + 50>;
-            quick-tap-ms = <QUICK_TAP>;
+            tapping-term-ms = <TAPPING_TERM >;
+            quick-tap-ms = <OTHER_QUICK_TAP>;
             hold-trigger-on-release;
         };
         qsk: quick_sticky_key {
