@@ -106,7 +106,7 @@
         COMBO(z,&kp Z, 6 7);
         COMBO(v,&kp V, 19 20);
         COMBO(x,&kp X, 21 22);
-        COMBO(bspc,&kp BSPC, 16 15);
+        COMBO(tmux ,&kp LC(S), 5 6 );
     };
 
     conditional_layers {
@@ -151,8 +151,8 @@
             label = "APT";
 
             bindings = <
-                               &kp W          &kp F          &kp P          &kp B          &kp K          &kp L          &kp U          &kp Y
-                &kp A          &hl LALT R     &hl LGUI S     &hl LCTRL T    &kp G          &kp M          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
+                               &kp W          &kp F          &kp P          &kp B          &kp M          &kp L          &kp U          &kp Y
+                &kp A          &hl LALT R     &hl LGUI S     &hl LCTRL T    &kp G          &kp K          &hr RCTRL N    &hr RGUI E     &hr LALT I     &kp O      
                                &kp J          &kp C          &kp D                                        &kp H          &comm          &dot   
                                                              &qmt LSHFT ESC &blt FUN SPACE &qlt NAV RET &qlt SYM TAB  
             >;
@@ -172,7 +172,7 @@
 
             bindings = <
                                &none          &none          &none           &kp C_VOL_UP   &kp LC(X)      &kp LC(INSERT) &kp LS(INSERT) &kp INSERT
-                &none          &sk LALT       &sk LGUI       &sk LCTRL       &kp C_VOL_DN   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp LC(S)
+                &none          &sk LALT       &sk LGUI       &sk LCTRL       &kp C_VOL_DN   &kp LEFT       &kp DOWN       &kp UP         &kp RIGHT      &kp BSPC
                                &kp HOME       &kp PG_DN      &kp END                                       &kp HOME       &kp PG_UP      &kp END
                                                              &trans          &trans         &trans         &trans
             >;
